@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "spdm-tool"
+version = "0.1.0"
+description = "SPDM Requester for SSD validation — sends arbitrary SPDM requests and validates responder behaviour against the DMTF DSP0274 specification."
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.1",
+    "cryptography>=42.0",
+    "rich>=13.0",        # 彩色輸出與 table
+]
+
+[project.scripts]
+spdm-tool = "spdm_tool.cli.main:cli"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["spdm_tool*"]
